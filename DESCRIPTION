@@ -1,7 +1,7 @@
 Package: osmose
 Type: Package
 Title: Object Oriented Simulator of Marine Ecosystems
-Version: 0.1.0
+Version: 0.1.1
 Date: 2017-12-06
 Authors@R: c(
   person("Yunne-Jai", "Shin", role="aut"),
@@ -31,10 +31,10 @@ Imports: graphics, grDevices, rlist, stats, stringr, utils
 URL: http://www.osmose-model.org/
 LazyData: FALSE
 BugReports: https://github.com/osmose-model/osmose/issues
-SystemRequirements: Java JDK 1.7 or higher
+SystemRequirements: Java (>= 8)
 RoxygenNote: 6.0.1
 NeedsCompilation: no
-Packaged: 2017-12-11 17:16:51 UTC; nbarrier
+Packaged: 2018-01-09 16:23:33 UTC; nbarrier
 Author: Yunne-Jai Shin [aut],
   Travers Morgane [aut],
   Verley Philippe [aut],
@@ -45,4 +45,4 @@ Author: Yunne-Jai Shin [aut],
   Michael Hurtado [ctb]
 Maintainer: Nicolas Barrier <nicolas.barrier@ird.fr>
 Repository: CRAN
-Date/Publication: 2017-12-11 18:29:58 UTC
+Date/Publication: 2018-01-09 17:29:12 UTC
