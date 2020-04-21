@@ -4,7 +4,7 @@
 \alias{readOsmoseFiles}
 \title{Read Osmose output file}
 \usage{
-readOsmoseFiles(path, type, bySpecies = FALSE, ...)
+readOsmoseFiles(path, type, bySpecies = FALSE, ext = "csv", ...)
 }
 \arguments{
 \item{path}{Osmose output path}
@@ -12,6 +12,8 @@ readOsmoseFiles(path, type, bySpecies = FALSE, ...)
 \item{type}{Data type ("biomass", etc)}
 
 \item{bySpecies}{TRUE if should read one file per species.}
+
+\item{ext}{The extension of the files shich will be read.}
 
 \item{...}{Additional arguments}
 }
