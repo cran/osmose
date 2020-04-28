@@ -10,9 +10,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<meta name="author" content="Yunne-Jai Shin, Travers Morgane, Verley Philippe, Ricardo Oliveros-Ramos &amp; Laure Velez (2020)" />
+<meta name="author" content="Yunne-Jai Shin, Criscely Lujan, Wencheng Lau-Maudrano, Philippe Verley, Ricardo Oliveros-Ramos, Nicolas Barrier &amp; Laure Velez (2020)" />
 
-<meta name="date" content="2020-04-21" />
+<meta name="date" content="2020-04-28" />
 
 <title>Creates a folder with basic files for a running. Then, run the model and read the outputs.</title>
 
@@ -94,8 +94,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 
 <h1 class="title toc-ignore">Creates a folder with basic files for a running. Then, run the model and read the outputs.</h1>
-<h4 class="author">Yunne-Jai Shin, Travers Morgane, Verley Philippe, Ricardo Oliveros-Ramos &amp; Laure Velez (2020)</h4>
-<h4 class="date">2020-04-21</h4>
+<h4 class="author">Yunne-Jai Shin, Criscely Lujan, Wencheng Lau-Maudrano, Philippe Verley, Ricardo Oliveros-Ramos, Nicolas Barrier &amp; Laure Velez (2020)</h4>
+<h4 class="date">2020-04-28</h4>
 
 
 <div id="TOC">
@@ -125,6 +125,21 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <span class="co"># From Github</span>
 devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;osmose-model/osmose&quot;</span>)</code></pre></div>
+<p>Jar files will be automatically downloaded in a temporary directory. However in order to set its location you will need to set up the <code>OSMOSE_DIR</code> environment variable. This is done by editing the <code>.Renviron</code> file, as shown <a href="https://cran.r-project.org/package=startup">here</a>.</p>
+<p>Other way to edit the <code>.Renviron</code> file is by using the <code>usethis</code> package and the following code:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># To open the .Renviron file</span>
+usethis<span class="op">::</span><span class="kw">edit_r_environ</span>()
+
+<span class="co"># Then you should copy the directory where Jar files will be donwloaded. For example:</span>
+OSMOSE_DIR =<span class="st"> </span>Copy<span class="op">/</span>a<span class="op">/</span>path<span class="op">/</span>here  <span class="co">#Don't use quotation marks</span>
+
+<span class="co"># Then save and close the .Renviron file</span></code></pre></div>
+<p>Note that in Linux/Mac OS X, the file must be put into the <code>${HOME}</code> directory, while in Windows, it must be in the user’s <code>Documents</code> folder. Below is provided an example of <code>OSMOSE_DIR</code> for Linux/Mac Os X and Windows:</p>
+<ul>
+<li>On Linux/Mac Os X : <code>OSMOSE_DIR=/Users/Nicolas/Desktop/OSMOSE_TEST/R</code></li>
+<li>On Windows: <code>OSMOSE_DIR=C:\\Users\\Nicolas\\Desktop\\OSMOSE_TEST\\R</code></li>
+</ul>
+<p>If you set upped <code>OSMOSE_DIR</code> variable you can re-use the same directory to download the files related to the demostration of the package.</p>
 </div>
 <div id="about-osmose" class="section level2">
 <h2>About OSMOSE</h2>
@@ -137,12 +152,14 @@ devtools<span class="op">::</span><span class="kw">install_github</span>(<span c
 <h3>Create example files</h3>
 <p><code>osmose</code> includes a function that allows to create basic example files in a selected folder. The files corresponds to a case study provided by <span class="citation">Halouani et al. (2016)</span>. <code>osmose_demo</code> uses two main arguments: (1) <code>path</code> will be the folder path where the files will be copied and (2) <code>config</code> which indicates the configuration example to be copied. To indicate <span class="citation">Halouani et al. (2016)</span> case study, <code>config = &quot;gog&quot;</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Define a folder to copy files (for the example: a temporary folder)</span>
+<span class="co"># Here you can also select the same directory than in OSMOSE_DIR </span>
 exampleFolder &lt;-<span class="st"> </span><span class="kw">tempdir</span>()
 
 <span class="kw">cat</span>(exampleFolder)
-<span class="co">#&gt; /var/folders/3c/807k30_50mv_53hr_lqb6q0c0000gn/T//RtmpdQ501N</span></code></pre></div>
+<span class="co">#&gt; /var/folders/3c/807k30_50mv_53hr_lqb6q0c0000gn/T//Rtmp1DrbUl</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Copy files</span>
-demoPaths &lt;-<span class="st"> </span><span class="kw">osmose_demo</span>(<span class="dt">path =</span> exampleFolder, <span class="dt">config =</span> <span class="st">&quot;gog&quot;</span>)</code></pre></div>
+demoPaths &lt;-<span class="st"> </span><span class="kw">osmose_demo</span>(<span class="dt">path =</span> exampleFolder, <span class="dt">config =</span> <span class="st">&quot;gog&quot;</span>)
+<span class="co">#&gt; Your file gog has been download and/or deziped in this folder : /var/folders/3c/807k30_50mv_53hr_lqb6q0c0000gn/T//Rtmp1DrbUl/gog</span></code></pre></div>
 <pre><code>#&gt; Copied files:
 #&gt;  [1] &quot;Maps/corr_grid2_DIPANN.csv&quot;           
 #&gt;  [2] &quot;Maps/corr_grid2_ENGENC.csv&quot;           
@@ -202,8 +219,9 @@ demoPaths &lt;-<span class="st"> </span><span class="kw">osmose_demo</span>(<spa
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Run an example using 'run_osmose' function (it will take less than 1 min)</span>
 <span class="kw">run_osmose</span>(<span class="dt">input =</span> demoPaths<span class="op">$</span>config_file)
 <span class="co">#&gt; This is OSMOSE version 3.3.3</span>
-<span class="co">#&gt; Your file osmose_3.3.3.jar has been download and/or deziped in this folder : /Users/Nicolas/Library/Application Support/R/osmose/osmose_3.3.3.jar</span>
-<span class="co">#&gt; Running: 'java'  -jar '/Users/Nicolas/Library/Application Support/R/osmose/osmose_3.3.3.jar' /var/folders/3c/807k30_50mv_53hr_lqb6q0c0000gn/T//RtmpdQ501N/gog/osm_all-parameters.csv</span></code></pre></div>
+<span class="co">#&gt; Your file lib has been download and/or deziped in this folder : /var/folders/3c/807k30_50mv_53hr_lqb6q0c0000gn/T//Rtmp1DrbUl/lib</span>
+<span class="co">#&gt; Your file osmose_3.3.3.jar has been download and/or deziped in this folder : /var/folders/3c/807k30_50mv_53hr_lqb6q0c0000gn/T//Rtmp1DrbUl/osmose_3.3.3.jar</span>
+<span class="co">#&gt; Running: 'java'  -jar '/var/folders/3c/807k30_50mv_53hr_lqb6q0c0000gn/T//Rtmp1DrbUl/osmose_3.3.3.jar' /var/folders/3c/807k30_50mv_53hr_lqb6q0c0000gn/T//Rtmp1DrbUl/gog/osm_all-parameters.csv</span></code></pre></div>
 </div>
 <div id="read-configuration-and-outputs" class="section level3">
 <h3>Read configuration and outputs</h3>
@@ -288,17 +306,17 @@ config &lt;-<span class="st"> </span><span class="kw">read_osmose</span>(<span c
 #&gt; 
 #&gt; Main indicators:
 #&gt;                        biomass    abundance  yield       yieldN
-#&gt; OctopusVulgaris        52976.5     45512650 1033.1     612431.1
-#&gt; MelicertusKerathurus  178179.7 764445774767 4175.7 4429627685.2
-#&gt; MetapenaeusMonoceros   91660.7 156665157469 3079.3  217570348.2
-#&gt; TrachurusTrachurus      1719.2  27319639859   12.4     338716.7
-#&gt; SardinaPilchardus       5990.6  34513978498   71.7    4275890.3
-#&gt; SardinellaAurita       11444.7  17418773576  109.4    6802481.5
-#&gt; EngraulisEncrasicolus   1397.1   3217963220    0.4      28615.1
-#&gt; DiplodusAnnularis     107093.8  99009044858 3211.3   70902831.9
-#&gt; MustelusMustelus       25732.2     42817078   72.5      78710.4
-#&gt; MerlucciusMerluccius   43411.1   3607087504  359.8   13422285.7
-#&gt; PagellusErythrinus     55906.4   6959228688 1433.6   18106726.3</code></pre>
+#&gt; OctopusVulgaris        53543.0     46142014 1051.6     622388.4
+#&gt; MelicertusKerathurus  174742.4 718621752647 4125.5 4171091910.1
+#&gt; MetapenaeusMonoceros   92013.5 126678098495 3064.3  215483027.8
+#&gt; TrachurusTrachurus      1725.0  25995919175   12.8     364684.7
+#&gt; SardinaPilchardus       5906.8  34589776659   71.4    4457450.6
+#&gt; SardinellaAurita       10616.9  15878016178   98.8    6380940.3
+#&gt; EngraulisEncrasicolus   1553.2   3637585590    0.4      32938.0
+#&gt; DiplodusAnnularis     104332.1  85678428382 3092.5   69149534.6
+#&gt; MustelusMustelus       25679.2     42470771   73.1      79294.6
+#&gt; MerlucciusMerluccius   42814.2   3684630223  351.3   12607854.3
+#&gt; PagellusErythrinus     57614.4   6921371795 1434.3   19176688.8</code></pre>
 </div>
 </div>
 <div id="references" class="section level2 unnumbered">

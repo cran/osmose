@@ -30,7 +30,7 @@ outputs <- read_osmose(path = demoPaths$output_dir,
 # Print osmose outputs
 print(outputs)
 
-## ---- fig.width=5.7, fig.height=4.75------------------------------------------
+## ---- fig.width=5.7, fig.height=4.75, warning=FALSE---------------------------
 plot(outputs, what = "biomass")
 plot(outputs, what = "biomass", type = 2)
 plot(outputs, what = "abundance", ts = FALSE, type = 1)

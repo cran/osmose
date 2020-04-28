@@ -1,7 +1,7 @@
 Package: osmose
 Type: Package
 Title: Object Oriented Simulator of Marine Ecosystems
-Version: 3.3.3
+Version: 3.3.4
 Date: 2020-04-03
 Authors@R: 
     c(person(given = "Yunne-Jai",
@@ -55,7 +55,7 @@ License: CeCILL
 Encoding: UTF-8
 Depends: R (>= 3.5.0)
 Imports: graphics, grDevices, rlist, stats, knitr, rmarkdown, stringr,
-        utils, ncdf4, mgcv, rappdirs, fields
+        utils, ncdf4, mgcv, fields
 URL: http://www.osmose-model.org/
 LazyData: FALSE
 BugReports: https://github.com/osmose-model/osmose/issues
@@ -63,7 +63,7 @@ SystemRequirements: Java (>= 8)
 VignetteBuilder: knitr
 RoxygenNote: 7.1.0
 NeedsCompilation: no
-Packaged: 2020-04-21 09:04:57 UTC; Nicolas
+Packaged: 2020-04-28 09:17:22 UTC; Nicolas
 Author: Yunne-Jai Shin [aut] (<https://orcid.org/0000-0002-7259-9265>),
   Travers Morgane [aut] (<https://orcid.org/0000-0003-1493-662X>),
   Verley Philippe [aut] (<https://orcid.org/0000-0002-5686-2764>),
@@ -75,4 +75,4 @@ Author: Yunne-Jai Shin [aut] (<https://orcid.org/0000-0002-7259-9265>),
   Wencheng Lau-Medrano [ctb]
 Maintainer: Nicolas Barrier <nicolas.barrier@ird.fr>
 Repository: CRAN
-Date/Publication: 2020-04-21 09:30:02 UTC
+Date/Publication: 2020-04-28 13:00:03 UTC
